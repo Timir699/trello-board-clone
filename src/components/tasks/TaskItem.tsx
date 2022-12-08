@@ -4,15 +4,13 @@ import { TaskContext } from "../../context/TaskContextProvider";
 import CardCreateForm from "./../cards/CardCreateForm";
 import { CardContext } from "./../../context/CardContextProvider";
 import CardList from "../cards/CardList";
+import { Droppable } from "react-beautiful-dnd";
 
 const TaskItem = (task: any) => {
   const { register, handleSubmit } = useForm();
   const [makeInput, setMakeInput] = useState(true);
   const { tasksDispatch } = useContext(TaskContext);
   const { cards } = useContext(CardContext);
-
-  console.log(cards);
-  console.log(task.task.listId);
 
   const onSubmit = (data: any, e: any) => {
     tasksDispatch({
@@ -26,7 +24,7 @@ const TaskItem = (task: any) => {
   };
   return (
     <>
-      <div className="bg-gray-200 pb-6">
+      <div className="bg-gray-200 p-4">
         {makeInput ? (
           <div
             onClick={() => setMakeInput(!makeInput)}
@@ -38,7 +36,7 @@ const TaskItem = (task: any) => {
           <div className="bg-gray-200 p-2">
             <form onSubmit={handleSubmit(onSubmit)}>
               <input
-                className="mt-2 text-lg font-bold"
+                className="text-lg font-bold mb-2"
                 style={{
                   borderRadius: "5px",
                   border: "none",
@@ -51,8 +49,15 @@ const TaskItem = (task: any) => {
           </div>
         )}
         <div>
-          <CardList task={task.task} />
-          <CardCreateForm task={task.task} />
+          <Droppable droppableId={task.task.listId}>
+            {(provided: any) => (
+              <div ref={provided.innerRef} {...provided.droppableProps}>
+                <CardList task={task.task} />
+                <CardCreateForm task={task.task} />
+                {provided.placeholder}
+              </div>
+            )}
+          </Droppable>
         </div>
       </div>
     </>

@@ -2,10 +2,12 @@ import { useContext } from "react";
 import { useForm } from "react-hook-form";
 import { v4 as uuidv4 } from "uuid";
 import { CardContext } from "./../../context/CardContextProvider";
+import { TaskContext } from "./../../context/TaskContextProvider";
 
 const CardCreateForm = (task: any) => {
   const { register, handleSubmit } = useForm();
   const { cardsDispatch, cards } = useContext(CardContext);
+  const { tasksDispatch, tasks } = useContext(TaskContext);
 
   const onSubmit = (data: any, e: any) => {
     const id = uuidv4();
@@ -18,6 +20,13 @@ const CardCreateForm = (task: any) => {
         listId: task.task.listId,
       },
     });
+    // tasksDispatch({
+    //   type: "ADD_CARD_ID_TO_TASK",
+    //   payload: {
+    //     cardId: id,
+    //     listId: task.task.listId,
+    //   },
+    // });
     e.target.reset();
   };
   return (

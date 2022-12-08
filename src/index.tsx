@@ -12,17 +12,15 @@ const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
 );
 root.render(
-  <React.StrictMode>
-    <BrowserRouter>
-      <BoardContextProvider>
-        <TaskContextProvider>
-          <CardContextProvider>
-            <App />
-          </CardContextProvider>
-        </TaskContextProvider>
-      </BoardContextProvider>
-    </BrowserRouter>
-  </React.StrictMode>
+  <BrowserRouter>
+    <BoardContextProvider>
+      <TaskContextProvider>
+        <CardContextProvider>
+          <App />
+        </CardContextProvider>
+      </TaskContextProvider>
+    </BoardContextProvider>
+  </BrowserRouter>
 );
 
 // If you want to start measuring performance in your app, pass a function
