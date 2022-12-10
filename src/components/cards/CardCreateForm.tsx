@@ -20,6 +20,14 @@ const CardCreateForm = (task: any) => {
         listId: task.task.listId,
       },
     });
+    tasksDispatch({
+      type: "ADD_CARD_TO_TASLKIST",
+      payload: {
+        cardName: data.cardName,
+        cardId: id,
+        listId: task.task.listId,
+      },
+    });
     // tasksDispatch({
     //   type: "ADD_CARD_ID_TO_TASK",
     //   payload: {

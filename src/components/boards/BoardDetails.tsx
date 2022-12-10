@@ -43,30 +43,29 @@ const Lists = () => {
     const cardToAdd = cards.find((card: any) => card.cardId === draggableId);
 
     if (destination.droppableId !== source.droppableId) {
-      cardsDispatch({
-        type: "REMOVE_LIST_ID_FROM_CARD",
-        payload: {
-          listId: source.droppableId,
-          cardId: draggableId,
-        },
-      });
-
-      cardsDispatch({
-        type: "ADD_LIST_ID_TO_CARD",
-        payload: {
-          listId: destination.droppableId,
-          cardId: draggableId,
-          card: cardToAdd,
-        },
-      });
-      cardsDispatch({
-        type: "SORT_CARD_ID",
-        payload: {
-          destinationIndex: destination.index,
-          sourceIndex: source.index,
-          droppableId: source.droppableId,
-        },
-      });
+      // cardsDispatch({
+      //   type: "REMOVE_LIST_ID_FROM_CARD",
+      //   payload: {
+      //     listId: source.droppableId,
+      //     cardId: draggableId,
+      //   },
+      // });
+      // cardsDispatch({
+      //   type: "ADD_LIST_ID_TO_CARD",
+      //   payload: {
+      //     listId: destination.droppableId,
+      //     cardId: draggableId,
+      //     card: cardToAdd,
+      //   },
+      // });
+      // cardsDispatch({
+      //   type: "SORT_CARD_ID",
+      //   payload: {
+      //     destinationIndex: destination.index,
+      //     sourceIndex: source.index,
+      //     droppableId: source.droppableId,
+      //   },
+      // });
     }
   };
 

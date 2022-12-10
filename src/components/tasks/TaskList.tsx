@@ -12,7 +12,7 @@ const TaskList = () => {
       <div className="grid grid-cols-3 gap-4">
         {tasks
           ?.filter((task: any) => {
-            return params.id === task.boardId;
+            return params.id === task?.boardId;
           })
           .map((task: any, index: any) => (
             <TaskItem key={index} task={task} />
